@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Meal Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🍽️ FOODORA</div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="what-i-have.html">Meal Planner</a>
+                <a href="#" data-action="logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Wallpaper -->
+    <section class="hero">
+        <div class="hero-background">
+            <img src="C:\Users\Harinisha\Downloads\S2.png" alt="Delicious meal" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="welcome-title">FOODORA</h1>
+            <p class="welcome-subtitle">Personalized Meal Recommendations Based on Your Health & Ingredients</p>
+            <div class="hero-buttons">
+                <a href="what-i-have.html" class="btn btn-primary">Start Planning</a>
+                <a href="login.html" class="btn btn-secondary">Create Account</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Previously Viewed Meals Section -->
+    <section class="home-history" id="home-history-section">
+        <div class="container">
+            <h2 class="section-title">Recently Viewed / Cooked Meals</h2>
+            <div id="home-history-list" class="home-history-grid">
+                <!-- History cards injected from script.js -->
+            </div>
+            <p id="home-history-empty" class="muted home-history-empty">No viewed meals yet. Start from Meal Planner and view a meal to see it here.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Health-Smart Meals?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="img2.jpg" alt="Health-Based Recommendations" class="card-img">
+                    </div>
+                    <h3>🩺 Health-Based Recommendations</h3>
+                    <p>Get meal suggestions tailored to your blood sugar and blood pressure levels.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.15-rsRrwyasX-inZnAsvkAHaEK?cb=defcache2defcache=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Dietary Preferences" class="card-img">
+                    </div>
+                    <h3>🥗 Dietary Preferences</h3>
+                    <p>Support for vegetarian, non-vegetarian, vegan, and eggetarian diets.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="img3.webp" class="card-img">
+                    </div>
+                    <h3>🥘 Ingredient-Based Planning</h3>
+                    <p>Use what you have at home to create delicious, healthy meals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.rgu2N-cV7GlVVcNil37iHAHaFk?cb=defcache2defcache=1&w=996&h=750&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Weekly Planning" class="card-img">
+                    </div>
+                    <h3>📅 Weekly Meal Planning</h3>
+                    <p>Plan your meals for the entire week based on available ingredients.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="https://images.cdn.centreforaviation.com/stories/NET-PROMOTER-SCORE-1024x.jpg" alt="Smart Analysis" class="card-img">
+                    </div>
+                    <h3>🧠 Smart Health Analysis</h3>
+                    <p>AI analyzes your health metrics and suggests appropriate meals.</p>
+                </div>
+                 <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="img4.jpg" alt="Detailed Steps" class="card-img">
+                    </div>
+                    <h3>📝 Detailed Cooking Steps</h3>
+                    <p>Get step-by-step cooking instructions with health benefit information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About Health-Smart Meals</h2>
+            <div class="about-content">
+                <p><strong>Health-Smart Meals is an intelligent meal recommendation system focused on your health and well-being. We analyze your blood sugar and blood pressure levels along with your available ingredients to suggest personalized, health-optimized meals.</strong></p>
+                <p>Our system helps you manage your health through proper nutrition by:</p>
+                <ul>
+                    <li>Analyzing your health metrics (blood sugar and blood pressure)</li>
+                    <li>Suggesting meals that help balance your health conditions</li>
+                    <li>Supporting your dietary preferences (vegetarian, non-vegetarian, vegan, eggetarian)</li>
+                    <li>Creating single-day or weekly meal plans based on your available ingredients</li>
+                    <li>Providing detailed cooking instructions with health benefit information</li>
+                </ul>
+                <p>Whether you need to manage high blood sugar, control blood pressure, or simply eat healthier, Health-Smart Meals provides the guidance you need to make informed food choices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Enter Health Info</h3>
+                    <p>Provide your name, age, blood sugar level, and blood pressure readings.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Select Preferences</h3>
+                    <p>Choose your dietary preference and enter available ingredients.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Health Analysis</h3>
+                    <p>Our AI analyzes your health metrics and suggests appropriate meals.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Get Meal Plan</h3>
+                    <p>Receive personalized meal recommendations with cooking steps and health benefits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Eat Healthier?</h2>
+            <p>Start your health-smart meal planning journey today and take control of your health through nutrition!</p>
+            <a href="what-i-have.html" class="btn btn-large">Start Planning Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Health-Smart Meals - Personalized Health-Based Meal Planner. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

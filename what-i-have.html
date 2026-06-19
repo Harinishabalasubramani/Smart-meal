@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health-Smart Meal Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🍽️ FOODORA</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="what-i-have.html" class="active">Meal Planner</a>
+                <a href="#" data-action="logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Section -->
+    <section class="health-meal-section">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">🩺 Personalized Health-Based Meal Planner</h1>
+                <p class="page-subtitle">Enter your health metrics and ingredients for customized meal recommendations</p>
+            </div>
+
+            <div class="health-form-container">
+                <!-- Health & Personal Information Form -->
+                <form id="health-meal-form" class="health-form-card">
+                    
+                    <!-- Personal Information Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">👤 Personal Information</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="user-name">Your Name <span class="required">*</span></label>
+                                <input type="text" id="user-name" name="user-name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="user-age">Age (years) <span class="required">*</span></label>
+                                <input type="number" id="user-age" name="user-age" placeholder="25" min="1" max="120" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Metrics Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">🩺 Health Metrics</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="sugar-level">Blood Sugar Level (mg/dL) <span class="required">*</span></label>
+                                <input type="number" id="sugar-level" name="sugar-level" placeholder="100" min="20" max="500" required>
+                                <small class="help-text">Normal: 70-100 (fasting), 70-140 (post-meal)</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="bp-level">Blood Pressure (mmHg) <span class="required">*</span></label>
+                                <input type="text" id="bp-level" name="bp-level" placeholder="120/80" pattern="^\d{2,3}/\d{2,3}$" required>
+                                <small class="help-text">Format: Systolic/Diastolic (e.g., 120/80)</small>
+                            </div>
+                        </div>
+                        <div id="health-status" class="health-status-indicator"></div>
+                    </div>
+
+                    <!-- Dietary Preferences Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">🥗 Dietary Preferences</h2>
+                        <div class="diet-preference-grid">
+                            <label class="diet-preference-card">
+                                <input type="radio" name="diet-type" value="vegetarian" required>
+                                <div class="diet-card-content">
+                                    <span class="diet-icon">🥬</span>
+                                    <span class="diet-label">Vegetarian</span>
+                                </div>
+                            </label>
+                            <label class="diet-preference-card">
+                                <input type="radio" name="diet-type" value="non-vegetarian">
+                                <div class="diet-card-content">
+                                    <span class="diet-icon">🍗</span>
+                                    <span class="diet-label">Non-Vegetarian</span>
+                                </div>
+                            </label>
+                            <label class="diet-preference-card">
+                                <input type="radio" name="diet-type" value="vegan">
+                                <div class="diet-card-content">
+                                    <span class="diet-icon">🌱</span>
+                                    <span class="diet-label">Vegan</span>
+                                </div>
+                            </label>
+                            <label class="diet-preference-card">
+                                <input type="radio" name="diet-type" value="eggetarian">
+                                <div class="diet-card-content">
+                                    <span class="diet-icon">🥚</span>
+                                    <span class="diet-label">Eggetarian</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Ingredients Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">🥘 Available Ingredients</h2>
+                        <p class="section-description">Tell us what ingredients you have at home</p>
+                        
+                        <div class="quick-add-ingredients">
+                            <h3>Quick Add (Click to select)</h3>
+                            <div class="ingredient-buttons">
+                                <button type="button" class="ingredient-btn" data-ingredient="rice">🍚 Rice</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="wheat">🌾 Wheat</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="potato">🥔 Potato</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="tomato">🍅 Tomato</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="onion">🧅 Onion</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="spinach">🥬 Spinach</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="carrot">🥕 Carrot</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="beans">🫘 Beans</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="lentils">🫘 Lentils</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="chicken">🍗 Chicken</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="fish">🐟 Fish</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="egg">🥚 Eggs</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="paneer">🧀 Paneer</button>
+                                <button type="button" class="ingredient-btn" data-ingredient="milk">🥛 Milk</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="custom-ingredients">Or Type Your Ingredients (comma-separated)</label>
+                            <textarea id="custom-ingredients" name="custom-ingredients" rows="4" placeholder="e.g., rice, tomatoes, potatoes, spinach, chicken, eggs..."></textarea>
+                        </div>
+
+                        <div class="selected-ingredients-display">
+                            <h3>Selected Ingredients:</h3>
+                            <div id="selected-ingredients-tags" class="ingredients-tags">
+                                <span class="no-selection">No ingredients selected yet</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Meal Planning Duration Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">📅 Meal Planning Duration</h2>
+                        <div class="planning-options">
+                            <label class="planning-card">
+                                <input type="radio" name="planning-duration" value="1" checked>
+                                <div class="planning-content">
+                                    <span class="planning-icon">📍</span>
+                                    <span class="planning-label">Single Meal</span>
+                                </div>
+                            </label>
+                            <label class="planning-card">
+                                <input type="radio" name="planning-duration" value="3">
+                                <div class="planning-content">
+                                    <span class="planning-icon">📆</span>
+                                    <span class="planning-label">3 Days Plan</span>
+                                </div>
+                            </label>
+                            <label class="planning-card">
+                                <input type="radio" name="planning-duration" value="7">
+                                <div class="planning-content">
+                                    <span class="planning-icon">📅</span>
+                                    <span class="planning-label">7 Days Plan</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            <span class="btn-icon">✨</span>
+                            <span>Get Your Personalized Meal Plan</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Section (Initially Hidden) -->
+            <div id="results-section" class="results-section" style="display: none;">
+                <div class="welcome-message" id="welcome-message"></div>
+                
+                <div class="meal-recommendations" id="meal-recommendations">
+                    <!-- Meal recommendations will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Health-Smart Meals - Personalized Health-Based Meal Planner. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Health-based meal planner logic
+        let selectedIngredients = [];
+
+        // Health status analyzer
+        function analyzeHealthMetrics(sugarLevel, bpSystolic, bpDiastolic) {
+            const analysis = {
+                sugar: { status: '', message: '', recommendation: '' },
+                bp: { status: '', message: '', recommendation: '' }
+            };
+
+            // Sugar level analysis
+            if (sugarLevel < 70) {
+                analysis.sugar = {
+                    status: 'low',
+                    message: '⚠️ Low Blood Sugar',
+                    recommendation: 'We\'ll suggest meals rich in complex carbohydrates to stabilize your sugar levels.'
+                };
+            } else if (sugarLevel >= 70 && sugarLevel <= 140) {
+                analysis.sugar = {
+                    status: 'normal',
+                    message: '✅ Normal Blood Sugar',
+                    recommendation: 'Your sugar level is healthy. We\'ll suggest balanced meals.'
+                };
+            } else if (sugarLevel > 140 && sugarLevel <= 200) {
+                analysis.sugar = {
+                    status: 'high',
+                    message: '⚠️ Elevated Blood Sugar',
+                    recommendation: 'We\'ll suggest low-glycemic meals to help manage your sugar levels.'
+                };
+            } else {
+                analysis.sugar = {
+                    status: 'very-high',
+                    message: '🚨 Very High Blood Sugar',
+                    recommendation: 'We\'ll suggest strictly low-sugar, high-fiber meals. Please consult your doctor.'
+                };
+            }
+
+            // BP analysis
+            if (bpSystolic < 90 || bpDiastolic < 60) {
+                analysis.bp = {
+                    status: 'low',
+                    message: '⚠️ Low Blood Pressure',
+                    recommendation: 'We\'ll suggest meals with adequate salt and hydration.'
+                };
+            } else if (bpSystolic <= 120 && bpDiastolic <= 80) {
+                analysis.bp = {
+                    status: 'normal',
+                    message: '✅ Normal Blood Pressure',
+                    recommendation: 'Your blood pressure is healthy. We\'ll suggest balanced meals.'
+                };
+            } else if (bpSystolic <= 139 || bpDiastolic <= 89) {
+                analysis.bp = {
+                    status: 'elevated',
+                    message: '⚠️ Elevated Blood Pressure',
+                    recommendation: 'We\'ll suggest low-sodium meals to help manage your blood pressure.'
+                };
+            } else {
+                analysis.bp = {
+                    status: 'high',
+                    message: '🚨 High Blood Pressure',
+                    recommendation: 'We\'ll suggest strictly low-sodium, heart-healthy meals. Please consult your doctor.'
+                };
+            }
+
+            return analysis;
+        }
+
+        // Display health status
+        function displayHealthStatus(analysis) {
+            const statusDiv = document.getElementById('health-status');
+            statusDiv.innerHTML = `
+                <div class="health-metric">
+                    <div class="metric-header ${analysis.sugar.status}">
+                        <span>${analysis.sugar.message}</span>
+                    </div>
+                    <p class="metric-recommendation">${analysis.sugar.recommendation}</p>
+                </div>
+                <div class="health-metric">
+                    <div class="metric-header ${analysis.bp.status}">
+                        <span>${analysis.bp.message}</span>
+                    </div>
+                    <p class="metric-recommendation">${analysis.bp.recommendation}</p>
+                </div>
+            `;
+        }
+
+        // Ingredient button handlers
+        document.querySelectorAll('.ingredient-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const ingredient = this.getAttribute('data-ingredient');
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedIngredients = selectedIngredients.filter(i => i !== ingredient);
+                } else {
+                    this.classList.add('selected');
+                    if (!selectedIngredients.includes(ingredient)) {
+                        selectedIngredients.push(ingredient);
+                    }
+                }
+                updateSelectedIngredients();
+            });
+        });
+
+        // Update selected ingredients display
+        function updateSelectedIngredients() {
+            const customIngredients = document.getElementById('custom-ingredients').value;
+            const allIngredients = [...selectedIngredients];
+            
+            if (customIngredients.trim()) {
+                const customList = customIngredients.split(',').map(i => i.trim().toLowerCase()).filter(i => i);
+                allIngredients.push(...customList);
+            }
+
+            const tagsContainer = document.getElementById('selected-ingredients-tags');
+            if (allIngredients.length === 0) {
+                tagsContainer.innerHTML = '<span class="no-selection">No ingredients selected yet</span>';
+            } else {
+                tagsContainer.innerHTML = allIngredients.map(ing => 
+                    `<span class="ingredient-tag">${ing}</span>`
+                ).join('');
+            }
+        }
+
+        // Listen to custom ingredients textarea
+        document.getElementById('custom-ingredients').addEventListener('input', updateSelectedIngredients);
+
+        // Health metrics change listener
+        document.getElementById('sugar-level').addEventListener('input', updateHealthAnalysis);
+        document.getElementById('bp-level').addEventListener('input', updateHealthAnalysis);
+
+        function updateHealthAnalysis() {
+            const sugarLevel = parseFloat(document.getElementById('sugar-level').value);
+            const bpValue = document.getElementById('bp-level').value;
+            const bpMatch = bpValue.match(/^(\d{2,3})\/(\d{2,3})$/);
+            
+            if (sugarLevel && bpMatch) {
+                const bpSystolic = parseInt(bpMatch[1]);
+                const bpDiastolic = parseInt(bpMatch[2]);
+                const analysis = analyzeHealthMetrics(sugarLevel, bpSystolic, bpDiastolic);
+                displayHealthStatus(analysis);
+            }
+        }
+
+        const API_BASE_URL = 'http://127.0.0.1:5000';
+
+        // Form submission handler
+        document.getElementById('health-meal-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('user-name').value,
+                age: document.getElementById('user-age').value,
+                sugarLevel: parseFloat(document.getElementById('sugar-level').value),
+                bpLevel: document.getElementById('bp-level').value,
+                dietType: document.querySelector('input[name="diet-type"]:checked').value,
+                planningDuration: document.querySelector('input[name="planning-duration"]:checked').value
+            };
+
+            // Get all ingredients
+            const customIngredients = document.getElementById('custom-ingredients').value;
+            const allIngredients = [...selectedIngredients];
+            if (customIngredients.trim()) {
+                const customList = customIngredients.split(',').map(i => i.trim().toLowerCase()).filter(i => i);
+                allIngredients.push(...customList);
+            }
+            formData.ingredients = allIngredients;
+
+            // Analyze health metrics
+            const bpMatch = formData.bpLevel.match(/^(\d{2,3})\/(\d{2,3})$/);
+            const bpSystolic = parseInt(bpMatch[1]);
+            const bpDiastolic = parseInt(bpMatch[2]);
+            const healthAnalysis = analyzeHealthMetrics(formData.sugarLevel, bpSystolic, bpDiastolic);
+
+            // Display results
+            await displayResults(formData, healthAnalysis);
+        });
+
+        async function displayResults(formData, healthAnalysis) {
+            // Hide form, show results
+            document.querySelector('.health-form-card').style.display = 'none';
+            document.getElementById('results-section').style.display = 'block';
+
+            // Display welcome message
+            const welcomeMsg = document.getElementById('welcome-message');
+            welcomeMsg.innerHTML = `
+                <h1>Welcome, ${formData.name}! 👋</h1>
+                <p>Based on your health profile and available ingredients, here are your personalized meal recommendations:</p>
+                <div class="health-summary">
+                    <div class="summary-item">
+                        <strong>Age:</strong> ${formData.age} years
+                    </div>
+                    <div class="summary-item">
+                        <strong>Diet Preference:</strong> ${formData.dietType.charAt(0).toUpperCase() + formData.dietType.slice(1)}
+                    </div>
+                    <div class="summary-item">
+                        <strong>Planning Duration:</strong> ${formData.planningDuration === '1' ? 'Single Meal' : formData.planningDuration + ' Days'}
+                    </div>
+                </div>
+                <div class="health-insights">
+                    <div class="insight-card ${healthAnalysis.sugar.status}">
+                        <h3>${healthAnalysis.sugar.message}</h3>
+                        <p>${healthAnalysis.sugar.recommendation}</p>
+                    </div>
+                    <div class="insight-card ${healthAnalysis.bp.status}">
+                        <h3>${healthAnalysis.bp.message}</h3>
+                        <p>${healthAnalysis.bp.recommendation}</p>
+                    </div>
+                </div>
+            `;
+
+            // Generate meal recommendations from backend if available.
+            await generateMealRecommendations(formData, healthAnalysis);
+
+            // Scroll to results
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function generateMealRecommendations(formData, healthAnalysis) {
+            const recommendationsDiv = document.getElementById('meal-recommendations');
+            recommendationsDiv.innerHTML = '<p class="muted">Finding personalized meals...</p>';
+
+            let meals = [];
+            let algorithmInfo = '';
+            let backendRisk = '';
+
+            try {
+                const backendData = await fetchBackendRecommendations(formData);
+                meals = backendData.recommendations?.meals || [];
+                algorithmInfo = backendData.recommendations?.algorithm || algorithmInfo;
+                backendRisk = backendData.health?.risk_label || '';
+            } catch (error) {
+                console.warn('Backend unavailable, using fallback sample meals.', error);
+                meals = getSampleMeals(formData, healthAnalysis);
+            }
+
+            if (!meals.length) {
+                meals = getSampleMeals(formData, healthAnalysis);
+            }
+            
+            let html = '<h2 class="recommendations-title">🍽️ Your Personalized Meal Plan</h2>';
+            if (algorithmInfo) {
+                html += `<p class="muted">Engine: ${algorithmInfo}${backendRisk ? ` | Predicted risk: ${backendRisk}` : ''}</p>`;
+            }
+            
+            if (formData.planningDuration === '1') {
+                html += '<div class="meal-cards">';
+                meals.slice(0, 3).forEach(meal => {
+                    html += createMealCard(meal);
+                });
+                html += '</div>';
+            } else {
+                // Multi-day plan
+                const daysCount = parseInt(formData.planningDuration);
+                html += '<div class="weekly-plan">';
+                for (let day = 1; day <= daysCount; day++) {
+                    html += `
+                        <div class="day-plan">
+                            <h3>Day ${day}</h3>
+                            <div class="meal-cards">
+                                ${createMealCard(meals[(day - 1) % meals.length])}
+                            </div>
+                        </div>
+                    `;
+                }
+                html += '</div>';
+            }
+
+            html += `
+                <div class="action-buttons">
+                    <button onclick="window.print()" class="btn-action">🖨️ Print Meal Plan</button>
+                    <button onclick="location.reload()" class="btn-action">🔄 Start Over</button>
+                </div>
+            `;
+
+            recommendationsDiv.innerHTML = html;
+            
+            // Display previously viewed meals
+            displayPreviouslyViewedMeals();
+        }
+
+        async function fetchBackendRecommendations(formData) {
+            const bpMatch = formData.bpLevel.match(/^(\d{2,3})\/(\d{2,3})$/);
+            if (!bpMatch) {
+                throw new Error('Invalid blood pressure format');
+            }
+
+            const payload = {
+                age: Number(formData.age),
+                sugar_level: Number(formData.sugarLevel),
+                bp_systolic: Number(bpMatch[1]),
+                bp_diastolic: Number(bpMatch[2]),
+                diet_type: formData.dietType,
+                ingredients: formData.ingredients,
+                top_n: formData.planningDuration === '1' ? 3 : 7
+            };
+
+            const response = await fetch(`${API_BASE_URL}/api/health-and-recommend`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Backend request failed: ${response.status}`);
+            }
+
+            return response.json();
+        }
+
+        function createMealCard(meal) {
+            const mealId = meal.name.replace(/\s+/g, '-').toLowerCase();
+            return `
+                <div class="meal-card" data-meal-id="${mealId}" data-meal-name="${meal.name}">
+                    <div class="meal-header" onclick="expandMealCard('${mealId}')">
+                        <div class="meal-title-section">
+                            <h3>${meal.name}</h3>
+                            <span class="meal-badge ${meal.healthBadge}">${meal.healthBadge === 'sugar-friendly' ? '🍃 Sugar-Friendly' : '❤️ Heart-Healthy'}</span>
+                        </div>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="meal-details">
+                        <p><strong>Ingredients:</strong> ${(Array.isArray(meal.ingredients) ? meal.ingredients : []).join(', ')}</p>
+                    </div>
+                    <div class="cooking-steps hidden" id="steps-${mealId}">
+                        <h4>Cooking Steps:</h4>
+                        <ol>
+                            ${(Array.isArray(meal.steps) ? meal.steps : []).map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+                    </div>
+                    <div class="meal-nutrition hidden" id="nutrition-${mealId}">
+                        <strong>Health Benefits:</strong> ${meal.healthBenefit}
+                    </div>
+                </div>
+            `;
+        }
+
+        function expandMealCard(mealId) {
+            const card = document.querySelector(`[data-meal-id="${mealId}"]`);
+            const stepsDiv = document.getElementById(`steps-${mealId}`);
+            const nutritionDiv = document.getElementById(`nutrition-${mealId}`);
+            
+            if (!card || !stepsDiv || !nutritionDiv) return;
+            
+            const expandIcon = card.querySelector('.expand-icon');
+            const isExpanded = stepsDiv.classList.contains('hidden');
+            
+            if (isExpanded) {
+                stepsDiv.classList.remove('hidden');
+                nutritionDiv.classList.remove('hidden');
+                expandIcon.textContent = '▲';
+                card.classList.add('expanded');
+                
+                // Save the meal to localStorage (only for non-history meals)
+                if (!mealId.includes('history-')) {
+                    saveMealToHistory(card.getAttribute('data-meal-name'), {
+                        name: card.getAttribute('data-meal-name'),
+                        ingredients: card.querySelector('.meal-details p').textContent,
+                        steps: Array.from(stepsDiv.querySelectorAll('li')).map(li => li.textContent),
+                        healthBenefit: nutritionDiv.textContent
+                    });
+                }
+            } else {
+                stepsDiv.classList.add('hidden');
+                nutritionDiv.classList.add('hidden');
+                expandIcon.textContent = '▼';
+                card.classList.remove('expanded');
+            }
+        }
+
+        function saveMealToHistory(mealName, mealData) {
+            let history = JSON.parse(localStorage.getItem('mealHistory')) || [];
+            
+            // Check if meal already exists in history
+            const existingIndex = history.findIndex(m => m.name === mealName);
+            if (existingIndex !== -1) {
+                // Move it to the top
+                history.splice(existingIndex, 1);
+            }
+            
+            // Add to the beginning
+            history.unshift({
+                name: mealName,
+                viewedAt: new Date().toISOString(),
+                ...mealData
+            });
+            
+            // Keep only last 10 meals
+            history = history.slice(0, 10);
+            
+            localStorage.setItem('mealHistory', JSON.stringify(history));
+            
+            // Update previously viewed section if it exists
+            displayPreviouslyViewedMeals();
+        }
+
+        function displayPreviouslyViewedMeals() {
+            const history = JSON.parse(localStorage.getItem('mealHistory')) || [];
+            
+            if (history.length === 0) {
+                return;
+            }
+            
+            const recommendationsDiv = document.getElementById('meal-recommendations');
+            let previousViewedHtml = `
+                <div class="previously-viewed-section">
+                    <h2 class="recommendations-title">📋 Previously Viewed Recipes</h2>
+                    <div class="meal-cards">
+            `;
+            
+            history.forEach((meal, index) => {
+                const mealId = `history-${index}-${meal.name.replace(/\s+/g, '-').toLowerCase()}`;
+                previousViewedHtml += `
+                    <div class="meal-card meal-card-history" data-meal-id="${mealId}" data-meal-name="${meal.name}">
+                        <div class="meal-header" onclick="expandMealCard('${mealId}')">
+                            <div class="meal-title-section">
+                                <h3>${meal.name}</h3>
+                            </div>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="meal-details">
+                            <p class="view-time">Last viewed: ${new Date(meal.viewedAt).toLocaleDateString()}</p>
+                        </div>
+                        <div class="cooking-steps hidden" id="steps-${mealId}">
+                            <h4>Cooking Steps:</h4>
+                            <ol>
+                                ${meal.steps.map(step => `<li>${step}</li>`).join('')}
+                            </ol>
+                        </div>
+                        <div class="meal-nutrition hidden" id="nutrition-${mealId}">
+                            <strong>Health Benefits:</strong> ${meal.healthBenefit}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            previousViewedHtml += `
+                    </div>
+                    <button onclick="clearMealHistory()" class="btn-action btn-clear-history">🗑️ Clear History</button>
+                </div>
+            `;
+            
+            // Check if previously viewed section already exists
+            const existingSection = recommendationsDiv.querySelector('.previously-viewed-section');
+            if (existingSection) {
+                existingSection.remove();
+            }
+            
+            // Insert at the end
+            recommendationsDiv.insertAdjacentHTML('beforeend', previousViewedHtml);
+        }
+
+        function clearMealHistory() {
+            if (confirm('Are you sure you want to clear your meal history?')) {
+                localStorage.removeItem('mealHistory');
+                const section = document.querySelector('.previously-viewed-section');
+                if (section) {
+                    section.remove();
+                }
+            }
+        }
+
+        function getSampleMeals(formData, healthAnalysis) {
+            // Sample meals based on dietary preferences and health status
+            // This will be replaced with actual AI recommendations using the dataset
+            const meals = [];
+
+            if (formData.dietType === 'vegetarian' || formData.dietType === 'vegan') {
+                meals.push({
+                    name: 'Spinach and Lentil Curry',
+                    ingredients: ['spinach', 'lentils', 'tomato', 'onion', 'garlic'],
+                    steps: [
+                        'Soak lentils for 30 minutes',
+                        'Sauté onions and garlic until golden',
+                        'Add chopped tomatoes and cook until soft',
+                        'Add lentils and water, simmer for 20 minutes',
+                        'Add fresh spinach and cook for 5 minutes',
+                        'Season with turmeric and minimal salt'
+                    ],
+                    healthBadge: healthAnalysis.sugar.status === 'high' || healthAnalysis.sugar.status === 'very-high' ? 'sugar-friendly' : 'heart-healthy',
+                    healthBenefit: 'High in protein and iron, low glycemic index, helps regulate blood sugar'
+                });
+
+                meals.push({
+                    name: 'Oats and Vegetable Upma',
+                    ingredients: ['oats', 'carrot', 'beans', 'onion'],
+                    steps: [
+                        'Roast oats until fragrant',
+                        'Chop all vegetables finely',
+                        'Sauté vegetables with minimal oil',
+                        'Add roasted oats and water',
+                        'Cook until fluffy',
+                        'Season with pepper and lemon juice'
+                    ],
+                    healthBadge: 'sugar-friendly',
+                    healthBenefit: 'Low sodium, high fiber, helps control blood pressure and sugar levels'
+                });
+            }
+
+            if (formData.dietType === 'non-vegetarian' || formData.dietType === 'eggetarian') {
+                meals.push({
+                    name: 'Chicken Curry with Vegetables',
+                    ingredients: ['chicken', 'tomato', 'onion', 'ginger', 'garlic', 'carrot'],
+                    steps: [
+                        'Marinate chicken with ginger-garlic and turmeric',
+                        'Saute onion and tomato until soft',
+                        'Add chicken pieces and spices',
+                        'Cook with a little water until tender',
+                        'Add vegetables and simmer briefly'
+                    ],
+                    healthBadge: 'heart-healthy',
+                    healthBenefit: 'Indian-style high-protein meal with balanced spices and vegetables'
+                });
+            }
+
+            meals.push({
+                name: 'Brown Rice and Mixed Vegetable Bowl',
+                ingredients: ['rice', 'tomato', 'spinach', 'carrot'],
+                steps: [
+                    'Cook brown rice with water',
+                    'Sauté mixed vegetables with minimal oil',
+                    'Add spinach and cook until wilted',
+                    'Mix vegetables with cooked rice',
+                    'Season with herbs and spices (no salt)'
+                ],
+                healthBadge: healthAnalysis.bp.status === 'high' ? 'heart-healthy' : 'sugar-friendly',
+                healthBenefit: 'Whole grain, low sodium, packed with vitamins and minerals'
+            });
+
+            return meals;
+        }
+
+        // Initialize the ingredient stories database
+        const ingredientStories = {};
+        
+        console.log('Health-Smart Meal Planner loaded successfully!');
+    </script>
+</body>
+</html>
